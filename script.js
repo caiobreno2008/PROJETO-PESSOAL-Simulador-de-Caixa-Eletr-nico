@@ -1,30 +1,30 @@
-// Variáveis iniciais
-let saldo = 1000; // Saldo inicial
-let continuar = true // Flag para continuar o loop do menu
+// Initial variables
+let balance = 1000 // Saldo inicial
+let shouldContinue = true // Flag para continuar o loop do menu
 
 // Função para mostrar o menu e processar a escolha
-function mostrarMenu() {
+const showMenu = () => {
     alert("=== Menu do Caixa Eletrônico ===\n" +
           "1. Verificar Saldo\n" +
           "2. Saque\n" +
           "3. Depósito\n" +
           "4. Sair")
 
-    const escolha = prompt("Escolha uma opção (1-4):")
+    const choice = prompt("Escolha uma opção (1-4):")
 
-    switch (escolha) {
+    switch (choice) {
         case "1":
-            verificarSaldo()
-            break;
+            checkBalance()
+            break
         case "2":
-            realizarSaque()
+            makeWithdrawal()
             break
         case "3":
-            realizarDeposito()
+            makeDeposit()
             break
         case "4":
             alert("Obrigado por usar o caixa eletrônico. Até logo!")
-            continuar = false // Termina o loop
+            shouldContinue = false; // Termina o loop
             break
         default:
             alert("Opção inválida. Tente novamente.")
@@ -33,41 +33,41 @@ function mostrarMenu() {
 }
 
 // Função para verificar o saldo
-function verificarSaldo() {
-    alert(`Seu saldo atual é: R$ ${saldo.toFixed(2)}`)
+const checkBalance = () => {
+    alert(`Seu saldo atual é: R$ ${balance.toFixed(2)}`)
 }
 
 // Função para realizar um saque
-function realizarSaque() {
-    const valor = prompt("Digite o valor do saque:")
-    const valorNum = Number(valor); // Converte a entrada para número
+const makeWithdrawal = () => {
+    const amount = prompt("Digite o valor do saque:")
+    const amountNum = Number(amount); // Converte a entrada para um número
 
     // Verifica se o valor é um número positivo e se o campo não está vazio
-    if (valor === "" || valorNum <= 0) {
-        alert("Valor inválido. O saque deve ser um número positivo.");
-    } else if (valorNum > saldo) {
+    if (amount === "" || amountNum <= 0) {
+        alert("Valor inválido. O saque deve ser um número positivo.")
+    } else if (amountNum > balance) {
         alert("Saldo insuficiente para o saque.")
     } else {
-        saldo -= valorNum;
-        alert(`Saque de R$ ${valorNum.toFixed(2)} realizado com sucesso.`)
+        balance -= amountNum;
+        alert(`Saque de R$ ${amountNum.toFixed(2)} realizado com sucesso.`)
     }
 }
 
 // Função para realizar um depósito
-function realizarDeposito() {
-    const valor = prompt("Digite o valor do depósito:")
-    const valorNum = Number(valor); // Converte a entrada para número
+const makeDeposit = () => {
+    const amount = prompt("Digite o valor do depósito:");
+    const amountNum = Number(amount); // Converte a entrada para um número
 
     // Verifica se o valor é um número positivo e se o campo não está vazio
-    if (valor === "" || valorNum <= 0) {
+    if (amount === "" || amountNum <= 0) {
         alert("Valor inválido. O depósito deve ser um número positivo.")
     } else {
-        saldo += valorNum;
-        alert(`Depósito de R$ ${valorNum.toFixed(2)} realizado com sucesso.`)
+        balance += amountNum;
+        alert(`Depósito de R$ ${amountNum.toFixed(2)} realizado com sucesso.`)
     }
 }
 
 // Loop principal para o menu
 do {
-    mostrarMenu()
-} while (continuar)
+    showMenu()
+} while (shouldContinue)
