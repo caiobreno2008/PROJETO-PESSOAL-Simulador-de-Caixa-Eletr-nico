@@ -24,7 +24,7 @@ const showMenu = () => {
             break
         case "4":
             alert("Obrigado por usar o caixa eletrônico. Até logo!")
-            shouldContinue = false; // Termina o loop
+            shouldContinue = false // Termina o loop
             break
         default:
             alert("Opção inválida. Tente novamente.")
@@ -34,13 +34,13 @@ const showMenu = () => {
 
 // Função para verificar o saldo
 const checkBalance = () => {
-    alert(`Seu saldo atual é: R$ ${balance.toFixed(2)}`)
+    alert(`Seu saldo atual é: R$ ${balance}`)
 }
 
 // Função para realizar um saque
 const makeWithdrawal = () => {
     const amount = prompt("Digite o valor do saque:")
-    const amountNum = Number(amount); // Converte a entrada para um número
+    const amountNum = Number(amount) // Converte a entrada para um número
 
     // Verifica se o valor é um número positivo e se o campo não está vazio
     if (amount === "" || amountNum <= 0) {
@@ -48,22 +48,22 @@ const makeWithdrawal = () => {
     } else if (amountNum > balance) {
         alert("Saldo insuficiente para o saque.")
     } else {
-        balance -= amountNum;
-        alert(`Saque de R$ ${amountNum.toFixed(2)} realizado com sucesso.`)
+        balance -= amountNum
+        alert(`Saque de R$ ${amountNum} realizado com sucesso.`)
     }
 }
 
 // Função para realizar um depósito
 const makeDeposit = () => {
-    const amount = prompt("Digite o valor do depósito:");
-    const amountNum = Number(amount); // Converte a entrada para um número
+    const amount = prompt("Digite o valor do depósito:")
+    const amountNum = Number(amount) // Converte a entrada para um número
 
     // Verifica se o valor é um número positivo e se o campo não está vazio
     if (amount === "" || amountNum <= 0) {
         alert("Valor inválido. O depósito deve ser um número positivo.")
     } else {
-        balance += amountNum;
-        alert(`Depósito de R$ ${amountNum.toFixed(2)} realizado com sucesso.`)
+        balance += amountNum
+        alert(`Depósito de R$ ${amountNum} realizado com sucesso.`)
     }
 }
 
